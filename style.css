@@ -14,3 +14,7 @@ h1 {
     width: 300px;
     height: 400px;
 }
+.info {
+    background-color: blue;
+    text-align: center;
+}

@@ -24,12 +24,25 @@ addBookToLibrary(Harry)
 
 console.log(myLibrary)
 
+
+
+const addBook = document.querySelector('.books')
+const div = document.createElement('div')
+const p = document.createElement('p')
+
 function showBooks () {
     for (books in myLibrary) {
         console.log(myLibrary[books])
         target = myLibrary[books]
+        const div = document.createElement('div')
+        div.className = 'info'
+        addBook.append(div)
         for (item in target) {
             console.log(target[item])
+            const p = document.createElement('p')
+            div.append(p)
+            p.append(target[item])
+
         }
     }
 }
