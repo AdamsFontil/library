@@ -11,6 +11,9 @@ h1 {
     grid-template-rows: auto;
     justify-items: center;
     align-items: center;
+    position: relative;
+    text-align: center;
+    width: 100%;
 }
 .books div {
     width: 300px;
@@ -31,11 +34,18 @@ h1 {
     width: 300px;
 
 }
-.form {
+#form {
     display: flex;
     flex-direction: column;
     border-radius: 15px;
     width: 400px;
-    height: 500px;
+    height: 300px;
     grid-template-columns: 1/-1;
+    position: fixed;
+    left: 45%;
+    top: 5%;
+    transform: translate(-50%, 5%);
+    border: 3px solid #999999;
+    z-index: 9;
+
 }

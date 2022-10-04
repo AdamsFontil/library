@@ -50,4 +50,16 @@ function showBooks () {
 function addBook () {
 
 
+
 }
+
+function openTheForm() {
+    document.getElementById("form").style.display = "block";
+  }
+
+  function closeTheForm() {
+    document.getElementById("form").style.display = "none";
+  }
+
+//   closeTheForm()
+//   openTheForm()
