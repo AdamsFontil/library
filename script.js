@@ -8,18 +8,19 @@ function addBookToLibrary(book) {
     myLibrary.push(book)
     console.log(book)
 }
-addBookToLibrary(theHobbit)
-addBookToLibrary(GoT)
-addBookToLibrary(Harry)
+// addBookToLibrary(theHobbit)
+// addBookToLibrary(GoT)
+// addBookToLibrary(Harry)
 
 const books = document.querySelector('.books')
 const div = document.createElement('div')
 const p = document.createElement('p')
 
 function showBooks () {
-    for (book in myLibrary) {
-        console.log(myLibrary[book])
-        target = myLibrary[book]
+        len = myLibrary.length
+        console.log(len)
+        console.log(myLibrary[len-1])
+        target = myLibrary[len-1]
         const div = document.createElement('div')
         div.className = 'info'
         books.append(div)
@@ -27,9 +28,9 @@ function showBooks () {
             console.log(target[item])
             const p = document.createElement('p')
             div.append(p)
-            p.append(target[item])
+            p.innerText = (target[item])
         }
-    }
+
 }
 
 function Books(title, author, pages, read) {
@@ -49,7 +50,7 @@ function Books(title, author, pages, read) {
 
   }
   console.log(myLibrary)
-  addBook()
+
 
 const bookBtn = document.querySelector('.bookBtn')
 bookBtn.addEventListener('click', () => {
@@ -57,10 +58,12 @@ bookBtn.addEventListener('click', () => {
 })
 const submit = document.querySelector('.submit')
 submit.addEventListener('click', () => {
+    addBook()
     closeTheForm()
+    showBooks()
 })
 
-
+console.log(myLibrary)
 //   closeTheForm()
 //   openTheForm()
 
