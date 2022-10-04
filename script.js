@@ -1,30 +1,16 @@
 let myLibrary = [];
 
-function Books(title, author, pages, read) {
-    this.title = title,
-    this.author = author,
-    this.pages = pages,
-    this.read = read
-
-    // this.sayName = function() {
-    //   console.log(name)
-    // }
-  }
-
 const theHobbit = new Books('The Hobbit', 'J.R.R. Tolkien', '295', 'not read yet')
 const GoT = new Books('The Hobbit', 'J.R.R. Tolkien', '295', 'not read yet')
 const Harry = new Books('The Hobbit', 'J.R.R. Tolkien', '295', 'not read yet')
 
 function addBookToLibrary(book) {
     myLibrary.push(book)
+    console.log(book)
 }
 addBookToLibrary(theHobbit)
 addBookToLibrary(GoT)
 addBookToLibrary(Harry)
-
-console.log(myLibrary)
-
-
 
 const books = document.querySelector('.books')
 const div = document.createElement('div')
@@ -42,16 +28,33 @@ function showBooks () {
             const p = document.createElement('p')
             div.append(p)
             p.append(target[item])
-
         }
     }
 }
 
-function addBook () {
+function Books(title, author, pages, read) {
+    this.title = title,
+    this.author = author,
+    this.pages = pages,
+    this.read = read
+  }
 
 
 
-}
+  function addBook (title, author, pages ) {
+    title = document.querySelector('#title').value
+    author = document.querySelector('#author').value;
+    pages = document.querySelector('#pages').value;
+    myLibrary.push({title, author, pages})
+
+  }
+  console.log(myLibrary)
+  addBook()
+
+
+//   closeTheForm()
+//   openTheForm()
+
 
 function openTheForm() {
     document.getElementById("form").style.display = "block";
@@ -60,6 +63,3 @@ function openTheForm() {
   function closeTheForm() {
     document.getElementById("form").style.display = "none";
   }
-
-//   closeTheForm()
-//   openTheForm()
