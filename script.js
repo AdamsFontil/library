@@ -51,6 +51,15 @@ function Books(title, author, pages, read) {
   console.log(myLibrary)
   addBook()
 
+const bookBtn = document.querySelector('.bookBtn')
+bookBtn.addEventListener('click', () => {
+    openTheForm()
+})
+const submit = document.querySelector('.submit')
+submit.addEventListener('click', () => {
+    closeTheForm()
+})
+
 
 //   closeTheForm()
 //   openTheForm()

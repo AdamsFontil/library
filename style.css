@@ -47,5 +47,6 @@ h1 {
     transform: translate(-50%, 5%);
     border: 3px solid #999999;
     z-index: 9;
+    background-color: red;
 
 }
