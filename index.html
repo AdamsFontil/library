@@ -13,18 +13,23 @@
     <div class="page">
         <div class="menu">Menu</div>
         <div class="books">
-            <div>Book 1
-                <p>"J.R.R. Tolkien" </p>
-
-
-                  <p>"295"</p>
-
-
-            </div>
-
+            <div class="addBook"> <button>Add New Book</button></div>
             <div>Book 1</div>
             <div>Book 1</div>
-
+            <div>Book 1</div>
+        </div>
+        <div class="form">
+            <form  class="form" method="post" action="" target = "_parent" style="display: none;" >
+                <label for="title">Title</label>
+                <input type="text" value="Harry Potter" id="title">
+                <label for="author">Author</label>
+                <input type="text" value="Rowling" id="author">
+                <label for="pages">Pages</label>
+                <input type="number" value="200" id="pages">
+                <label for="read">Have you read it?</label>
+                <input type="checkbox" id="read">
+                <button type="submit">Submit</button>
+            </form>
         </div>
     </div>
 

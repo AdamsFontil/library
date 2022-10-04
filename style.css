@@ -9,6 +9,8 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
+    justify-items: center;
+    align-items: center;
 }
 .books div {
     width: 300px;
@@ -17,4 +19,23 @@ h1 {
 .info {
     background-color: blue;
     text-align: center;
+}
+.addBook {
+    grid-column: 1/-1;
+    justify-content: flex-start;
+    display: flex;
+}
+.addBook button {
+    border-radius: 15px;
+    height: 100px;
+    width: 300px;
+
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    width: 400px;
+    height: 500px;
+    grid-template-columns: 1/-1;
 }
