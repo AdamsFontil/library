@@ -42,11 +42,12 @@ function Books(title, author, pages, read) {
 
 
 
-  function addBook (title, author, pages ) {
+  function addBook (title, author, pages, read ) {
     title = document.querySelector('#title').value
     author = document.querySelector('#author').value;
     pages = document.querySelector('#pages').value;
-    myLibrary.push({title, author, pages})
+    read = document.querySelector('#read').checked ? document.querySelector('#read').value : 'Not Read';
+    myLibrary.push({title, author, pages, read});
 
   }
   console.log(myLibrary)
