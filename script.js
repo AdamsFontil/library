@@ -1,30 +1,20 @@
 let myLibrary = [];
 len = myLibrary.length
 
-const theHobbit = new Books('The Hobbit', 'J.R.R. Tolkien', '295', 'not read yet')
-const GoT = new Books('The Hobbit', 'J.R.R. Tolkien', '295', 'not read yet')
-const Harry = new Books('The Hobbit', 'J.R.R. Tolkien', '295', 'not read yet')
-const removeBtn = document.querySelector('.button')
+
 
 function addBookToLibrary(book) {
     myLibrary.push(book)
-    console.log(book)
 }
-// addBookToLibrary(theHobbit)
-// addBookToLibrary(GoT)
-// addBookToLibrary(Harry)
-
 const books = document.querySelector('.books')
 const div = document.createElement('div')
 const p = document.createElement('p')
 
 function showBooks () {
         len = myLibrary.length
-        console.log(len)
-        console.log(myLibrary[len-1])
         target = myLibrary[len-1]
         const div = document.createElement('div')
-        div.className = `info${len}`;
+        div.className = `info`;
         books.append(div)
         const button = document.createElement('button')
         for (item in target) {
@@ -32,23 +22,30 @@ function showBooks () {
             div.append(p)
             p.innerText = (target[item])
             div.append(button)
-            button.className = ('button')
+            button.className = (`removeBtn`)
             button.innerText = ('Remove')
         }
+        const removeBtns = document.querySelector(`.info`)
+        if (removeBtns === null) {
+          console.log('remove null')
+        } else
+        removeBtns.addEventListener('click', () => {
+          console.log(number)
+          console.log('removeBtns')
+            })
 }
-
-
-function remove () {
-  console.log(len)
-  len2 = len - 1
-  myLibrary.splice(len, 1)
-  const info = document.querySelector(`.info${len}`)
-  info.remove()
-
-
+function takeOut () {
+  newNumber = number - 1
+  myLibrary.splice(newNumber, 1)
 }
-removeBtn.addEventListener('click', () => {
-  remove()
+// I want this to work for every remove button
+const testing = document.querySelector('.testing')
+testing.addEventListener('click', () => {
+  console.log('testing')
+  takeOut()
+  number--
+  console.log(number)
+  console.log(myLibrary)
 })
 
 
@@ -60,14 +57,25 @@ function Books(title, author, pages, read) {
     this.pages = pages,
     this.read = read
   }
+
+number = 0
   function addBook (title, author, pages, read ) {
     title = document.querySelector('#title').value
     author = document.querySelector('#author').value;
     pages = document.querySelector('#pages').value;
     read = document.querySelector('#read').checked ? document.querySelector('#read').value : 'Not Read';
-    myLibrary.push({title, author, pages, read});
+    number++
+    myLibrary.push({title, author, pages, read, number});
 
   }
+  // const removeBtns = document.querySelector(`.info`);
+  // removeBtns.addEventListener('click', () => {
+  //   console.log('remove working')
+  //   console.log(div)
+  //   console.log(len)
+  //   takeOut()
+
+  //     })
 
 
 const bookBtn = document.querySelector('.bookBtn')
@@ -81,15 +89,10 @@ submit.addEventListener('click', () => {
     showBooks()
 })
 
-console.log(myLibrary)
-//   closeTheForm()
-//   openTheForm()
-
-
 function openTheForm() {
     document.getElementById("form").style.display = "block";
   }
 
-  function closeTheForm() {
+function closeTheForm() {
     document.getElementById("form").style.display = "none";
   }
