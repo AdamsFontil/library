@@ -59,3 +59,7 @@ h1 {
     text-align: center;
     padding-top: 30px;
 }
+#removeBtn {
+    background-color: blue;
+    border: 3px solid red;
+}
