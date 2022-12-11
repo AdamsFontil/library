@@ -23,7 +23,7 @@ function showBooks () {
         len = myLibrary.length
         target = myLibrary[len-1]
         const div = document.createElement('div')
-        div.id = `info`;
+        div.id = `info${len}`;
         books.append(div)
         const button = document.createElement('button')
         for (item in target) {
@@ -33,11 +33,20 @@ function showBooks () {
             div.append(button)
             button.class = (`${len}`)
             button.innerText = ('Remove')
-            button.addEventListener('click',removeFromLibrary)
+            button.addEventListener('click',takeOut)
         }
-        function removeFromLibrary () {
-          numberToRemove = button.class
-          myLibrary.splice(numberToRemove, 1)
+        function takeOut () {
+          number = button.class
+          myLibrary.splice(number, 1)
+          section = `info${number}`
+          const target2 = document.getElementById(section)
+          target2.remove()
+          // console.log(button.class)
+          // console.log(div.id)
+          // console.log({section})
+          // console.log({target2})
+
+
         }
 
 }
