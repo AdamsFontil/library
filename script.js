@@ -101,12 +101,12 @@ function showBooks () {
   }
 
 // so that page has books on display
-for (i =0; i <12; i++) {
-  addBook()
-  showBooks()
-  closeTheForm()
-  console.log('added an empty book')
-}
+// for (i =0; i <12; i++) {
+//   addBook()
+//   showBooks()
+//   closeTheForm()
+//   console.log('added an empty book')
+// }
 
 
 

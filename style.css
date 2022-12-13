@@ -135,19 +135,20 @@ audio {
     align-items: center;
     align-content: center;
     margin-left: 300px;
-    background-color: #00539CFF;
+    padding: 10px;
+    /* background-color: #00539CFF; */
 }
 audio {
     width: 500px;
     height: 30px;
-    background-color: #00539CFF;
+    /* background-color: #00539CFF; */
   }
   audio:hover {
-    background-color: rgb(54, 146, 226);
+    background-color: #00539CFF;
   }
   audio:active {
-    background-color: rgb(140, 190, 234);
+    background-color: #00539CFF;
   }
   .music {
-    background-color: #00539CFF;
+    background-color: peachpuff
   }
