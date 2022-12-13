@@ -9,8 +9,7 @@ function Book(title, author, pages, read,) {
   this.title = title,
   this.author = author,
   this.pages = pages,
-  this.read = read,
-  this.number = number
+  this.read = read
 }
 
 // Book.prototype.sayName = function () {
@@ -86,7 +85,6 @@ function showBooks () {
 
 }
 
-number = 0
 
 
 
@@ -98,8 +96,7 @@ number = 0
     author = document.querySelector('#author').value;
     pages = document.querySelector('#pages').value;
     read = document.querySelector('#read').checked ? document.querySelector('#read').value : 'Not Read';
-    number++
-    let newBook = new Book(title, author, pages, read, number);
+    let newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
   }
 
@@ -108,7 +105,7 @@ for (i =0; i <12; i++) {
   addBook()
   showBooks()
   closeTheForm()
-  console.log('loopy')
+  console.log('added an empty book')
 }
 
 
