@@ -18,6 +18,7 @@ function Book(title, author, pages, read,) {
 //     console.log(this.name)
 //   }
 // }
+value = 'Read'
 
 function showBooks () {
         len = myLibrary.length
@@ -30,6 +31,15 @@ function showBooks () {
             const p = document.createElement('p')
             div.append(p)
             p.innerText = (target[item])
+            if (target[item] === 'Not Read' ) {
+              value = 'Not Read'
+              p.innerText = value
+              const btn = document.createElement('button');
+              btn.id = (`testing${len}`)
+              btn.textContent = p.textContent;
+              p.parentNode.replaceChild(btn, p);
+              btn.addEventListener('click',changeReadStatus)
+            }
             div.append(button)
             button.class = (`${len}`)
             button.innerText = ('Remove')
@@ -41,19 +51,58 @@ function showBooks () {
           section = `info${number}`
           const target2 = document.getElementById(section)
           target2.remove()
-          // console.log(button.class)
-          // console.log(div.id)
-          // console.log({section})
-          // console.log({target2})
+        }
+        function changeReadStatus () {
+          // if (target.read === 'Read' ) {
+          //   target.read = 'Not Read'
+          //   value = 'Not Read'
+          //   console.log('works')
+          // }
+          // else if (target.read === 'Not Read' ) {
+          //   target.read = 'Read'
+          //   console.log('works2')
+          // }
+          // console.log(newBook)
+          number = button.class - 1
+          myLibrary[number].read = 'Read'
+          target.read = 'Read'
+          // console.log(target)
+          // console.log(target.number)
+          // console.log(target.read)
+          // console.log(number)
+          console.log(div)
+          value = 'Read'
+          section = `testing${button.class}`
+          const target3 = document.getElementById(section)
+          console.log(target3)
+          target3.innerText = 'testing'
+
+
+
+
+
+
+          // console.log('change')
+          // target.read = 'Read'
+          // console.log(target.read)
+          // console.log(target)
+          // p.innerText = 'Read'
+          // console.log(myLibrary)
+
+
 
 
         }
 
 }
 
-
-
 number = 0
+
+
+
+
+
+
   function addBook (title, author, pages, read ) {
     title = document.querySelector('#title').value
     author = document.querySelector('#author').value;
@@ -64,16 +113,13 @@ number = 0
     myLibrary.push(newBook);
   }
 
-
-
-
 // so that page has books on display
-// for (i =0; i <12; i++) {
-//   addBook()
-//   showBooks()
-//   closeTheForm()
-//   console.log('loopy')
-// }
+for (i =0; i <12; i++) {
+  addBook()
+  showBooks()
+  closeTheForm()
+  console.log('loopy')
+}
 
 
 
