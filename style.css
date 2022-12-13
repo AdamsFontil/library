@@ -3,6 +3,7 @@
     font-size: 20px;
     padding: 0;
     margin: 0;
+    color: peachpuff;
     /* background-color: #00539CFF; */
 }
 h1 {
@@ -20,7 +21,7 @@ h1 {
 .page {
     display: grid;
     grid-template-columns: 1fr 5fr;
-    background-color: red;
+    background-color: #00539CFF;
     /* height: 700px; */
     /* height: 1000px; */
 }
@@ -52,6 +53,7 @@ h1 {
     width: 100%;
     min-height: 700px;
     background-color: peachpuff;
+    color: white;
 
 }
 .books div {
@@ -151,4 +153,14 @@ audio {
   }
   .music {
     background-color: peachpuff
+  }
+  .credits {
+    display: flex;
+    flex-direction: row;
+  }
+  a {
+    display: flex;
+    text-decoration: none;
+    color: peachpuff;
+    display: flex;
   }
