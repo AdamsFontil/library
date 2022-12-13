@@ -20,7 +20,7 @@ h1 {
 .page {
     display: grid;
     grid-template-columns: 1fr 5fr;
-    background-color:#00539CFF;
+    background-color: red;
     /* height: 700px; */
     /* height: 1000px; */
 }
