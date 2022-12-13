@@ -35,6 +35,7 @@ function showBooks () {
               value = 'Not Read'
               p.innerText = value
               const btn = document.createElement('button');
+              btn.classList.add('unread')
               btn.id = (`testing${len}`)
               btn.textContent = p.textContent;
               p.parentNode.replaceChild(btn, p);
@@ -43,6 +44,7 @@ function showBooks () {
                 value = 'Read'
                 p.innerText = value
                 const btn = document.createElement('button');
+                btn.classList.add('read')
                 btn.id = (`testing${len}`)
                 btn.textContent = p.textContent;
                 p.parentNode.replaceChild(btn, p);
@@ -68,6 +70,7 @@ function showBooks () {
             target.read = 'Not Read'
             myLibrary[number].read = 'Not Read'
             value = 'Not Read'
+            target3.classList.replace('read', 'unread')
             target3.innerText = 'Not Read'
             console.log('works')
           }
@@ -75,6 +78,8 @@ function showBooks () {
             target.read = 'Read'
             myLibrary[number].read = 'Read'
             value = 'Read'
+            console.log(target3)
+            target3.classList.replace('unread', 'read')
             target3.innerText = 'Read'
           }
         }
