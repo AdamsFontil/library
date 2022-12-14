@@ -4,7 +4,7 @@
     padding: 0;
     margin: 0;
     color: peachpuff;
-    /* background-color: #00539CFF; */
+
 }
 h1 {
     display: flex;
@@ -134,6 +134,10 @@ button {
   .credits {
     display: flex;
     flex-direction: row;
+    background-color: #00539CFF;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
   }
   a {
     display: flex;
