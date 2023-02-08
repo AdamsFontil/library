@@ -115,10 +115,33 @@ bookBtn.addEventListener('click', () => {
     openTheForm()
 })
 const submit = document.querySelector('.submit')
-submit.addEventListener('click', () => {
-    addBook()
-    closeTheForm()
-    showBooks()
+submit.addEventListener('click', (event) => {
+  console.log('submit')
+  const errorMessage = document.querySelector('.errorMessage')
+  let requiredInputs = document.querySelectorAll("input[required]");
+    let isValid = true;
+    for (let i = 0; i < requiredInputs.length; i++) {
+      if (!requiredInputs[i].value) {
+        isValid = false;
+        console.log('check')
+        // break;
+      }
+    }
+    if (!isValid) {
+      event.preventDefault();
+      console.log('nocheck')
+
+
+      errorMessage.textContent = "All required fields must be filled out.";
+      errorMessage.style.color = "red";
+
+
+    } else {
+      errorMessage.textContent = ''
+      addBook()
+        closeTheForm()
+        showBooks()
+    }
 })
 
 function openTheForm() {
@@ -128,3 +151,18 @@ function openTheForm() {
 function closeTheForm() {
     document.getElementById("form").style.display = "none";
   }
+
+  // document.querySelector("form").addEventListener("submit", function(event) {
+  //   let requiredInputs = document.querySelectorAll("input[required]");
+  //   let isValid = true;
+  //   for (let i = 0; i < requiredInputs.length; i++) {
+  //     if (!requiredInputs[i].value) {
+  //       isValid = false;
+  //       break;
+  //     }
+  //   }
+  //   if (!isValid) {
+  //     event.preventDefault();
+  //     alert("All required fields must be filled out.");
+  //   }
+  // });
