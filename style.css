@@ -50,11 +50,10 @@ h1 {
     align-items: center;
     position: relative;
     /* text-align: center; */
-    width: 100%;
+    /* width: 100%; */
     min-height: 700px;
     background-color: peachpuff;
     color: white;
-
 }
 .books div {
     display: flex;

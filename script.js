@@ -1,131 +1,118 @@
-let myLibrary = [];
-len = myLibrary.length
+let myLibrary = JSON.parse(localStorage.getItem('myLibrary')) || [];
+  const books = document.querySelector('.books');
 
-const books = document.querySelector('.books')
-const div = document.createElement('div')
-const p = document.createElement('p')
+  function Book(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 
-function Book(title, author, pages, read,) {
-  this.title = title,
-  this.author = author,
-  this.pages = pages,
-  this.read = read
-}
-
-function showBooks () {
-        len = myLibrary.length
-        target = myLibrary[len-1]
-        const div = document.createElement('div')
-        div.id = `info${len}`;
-        books.append(div)
-        const button = document.createElement('button')
-        for (item in target) {
-            const p = document.createElement('p')
-            div.append(p)
-            p.innerText = (target[item])
-            if (target[item] === 'Not Read' ) {
-              value = 'Not Read'
-              p.innerText = value
-              const btn = document.createElement('button');
-              btn.classList.add('unread')
-              btn.id = (`testing${len}`)
-              btn.textContent = p.textContent;
-              p.parentNode.replaceChild(btn, p);
-              btn.addEventListener('click',changeReadStatus)
-            } else if (target[item] === 'Read' ) {
-                value = 'Read'
-                p.innerText = value
-                const btn = document.createElement('button');
-                btn.classList.add('read')
-                btn.id = (`testing${len}`)
-                btn.textContent = p.textContent;
-                p.parentNode.replaceChild(btn, p);
-                btn.addEventListener('click',changeReadStatus)
-            }
-            div.append(button)
-            button.class = (`${len}`)
-            button.innerText = ('Remove')
-            button.addEventListener('click',takeOut)
+  function showBooks() {
+    books.innerHTML = '';
+    for (let i = 0; i < myLibrary.length; i++) {
+      const div = document.createElement('div');
+      div.id = `info${i}`;
+      books.appendChild(div);
+      const button = document.createElement('button');
+      for (const item in myLibrary[i]) {
+        const p = document.createElement('p');
+        div.appendChild(p);
+        p.innerText = myLibrary[i][item];
+        if (myLibrary[i][item] === 'Not Read') {
+          const btn = document.createElement('button');
+          btn.classList.add('unread');
+          btn.id = `testing${i}`;
+          btn.textContent = p.textContent;
+          p.parentNode.replaceChild(btn, p);
+          btn.addEventListener('click', () => changeReadStatus(i));
+        } else if (myLibrary[i][item] === 'Read') {
+          const btn = document.createElement('button');
+          btn.classList.add('read');
+          btn.id = `testing${i}`;
+          btn.textContent = p.textContent;
+          p.parentNode.replaceChild(btn, p);
+          btn.addEventListener('click', () => changeReadStatus(i));
         }
-        function takeOut () {
-          number = button.class
-          myLibrary.splice(number, 1)
-          section = `info${number}`
-          const target2 = document.getElementById(section)
-          target2.remove()
-        }
-        function changeReadStatus () {
-          number = button.class - 1
-          section = `testing${button.class}`
-          const target3 = document.getElementById(section)
-          if (target.read === 'Read' ) {
-            target.read = 'Not Read'
-            myLibrary[number].read = 'Not Read'
-            value = 'Not Read'
-            target3.classList.replace('read', 'unread')
-            target3.innerText = 'Not Read'
-            console.log('works')
-          }
-          else if (target.read === 'Not Read' ) {
-            target.read = 'Read'
-            myLibrary[number].read = 'Read'
-            value = 'Read'
-            console.log(target3)
-            target3.classList.replace('unread', 'read')
-            target3.innerText = 'Read'
-          }
-        }
+      }
+      button.classList.add(`${i}`);
+      button.innerText = 'Remove';
+      div.appendChild(button);
+      button.addEventListener('click', () => takeOut(i));
+    }
+  }
+  showBooks()
 
-}
-
-  function addBook (title, author, pages, read ) {
-    title = document.querySelector('#title').value
+  function addBook(title, author, pages, read) {
+    title = document.querySelector('#title').value;
     author = document.querySelector('#author').value;
     pages = `${document.querySelector('#pages').value} pages`;
     read = document.querySelector('#read').checked ? document.querySelector('#read').value : 'Not Read';
-    let newBook = new Book(title, author, pages, read);
+
+    // Check if title already exists in library
+    const titleExists = myLibrary.some(book => book.title === title);
+
+    if (titleExists) {
+      alert('This book is already in the library so it was not added.');
+      return; // Stop execution if title already exists
+    }
+
+    const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
   }
 
 
-const bookBtn = document.querySelector('.bookBtn')
-bookBtn.addEventListener('click', () => {
-    openTheForm()
-})
-const submit = document.querySelector('.submit')
-submit.addEventListener('click', (event) => {
-  console.log('submit')
-  const errorMessage = document.querySelector('.errorMessage')
-  let requiredInputs = document.querySelectorAll("input[required]");
-    let isValid = true;
-    for (let i = 0; i < requiredInputs.length; i++) {
-      if (!requiredInputs[i].value) {
-        isValid = false;
-        console.log('check')
-        // break;
-      }
+  function takeOut(i) {
+    myLibrary.splice(i, 1);
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+    showBooks();
+  }
+
+  function changeReadStatus(i) {
+    if (myLibrary[i].read === 'Read') {
+      myLibrary[i].read = 'Not Read';
+    } else if (myLibrary[i].read === 'Not Read') {
+      myLibrary[i].read = 'Read';
     }
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+    showBooks();
+  }
+
+  // Load myLibrary from local storage, if it exists
+  const storedLibrary = localStorage.getItem('myLibrary');
+  if (storedLibrary) {
+    myLibrary = JSON.parse(storedLibrary);
+  }
+
+  const bookBtn = document.querySelector('.bookBtn');
+  bookBtn.addEventListener('click', () => openTheForm());
+
+  const submit = document.querySelector('.submit');
+  submit.addEventListener('click', (event) => {
+    event.preventDefault();
+    const requiredInputs = document.querySelectorAll('input[required]');
+    const isValid = Array.from(requiredInputs).every(input => input.value);
+    const errorMessage = document.querySelector('.errorMessage');
+
     if (!isValid) {
-      event.preventDefault();
-      console.log('nocheck')
-
-
-      errorMessage.textContent = "All required fields must be filled out.";
-      errorMessage.style.color = "red";
-
-
+      errorMessage.textContent = 'All required fields must be filled out.';
+      errorMessage.style.color = 'red';
     } else {
-      errorMessage.textContent = ''
-      addBook()
-        closeTheForm()
-        showBooks()
+      errorMessage.textContent = '';
+      addBook();
+      closeTheForm();
+      showBooks();
+      const inputFields = document.querySelectorAll('input');
+      Array.from(inputFields).forEach(input => input.value = '');
     }
-})
+  });
 
-function openTheForm() {
-    document.getElementById("form").style.display = "block";
+  function openTheForm() {
+    document.getElementById('form').style.display = 'block';
   }
+
 
 function closeTheForm() {
-    document.getElementById("form").style.display = "none";
-  }
+  document.getElementById("form").style.display = "none";
+}
