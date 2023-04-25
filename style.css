@@ -54,7 +54,13 @@ h1 {
     min-height: 700px;
     background-color: peachpuff;
     color: white;
+    @media (max-width: 768px) {
+      .grid-col {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 }
+
 .books div {
     display: flex;
     justify-items: flex-start;
@@ -67,7 +73,7 @@ h1 {
     border-radius: 10px;
     margin: 20px;
     background-color: #00539CFF;
-    font-size: 25px;
+    font-size: 20px;
     padding: 30px;
     gap: 10px;
 }
@@ -156,4 +162,16 @@ button {
 
   input:valid {
     border: 2px solid peachpuff;
+  }
+
+  @media screen and (max-width: 768px) {
+    .page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .books {
+      grid-template-columns: 1fr;
+    }
   }
