@@ -83,6 +83,7 @@ h1 {
     z-index: 9;
     background-color: #00539CFF;
     text-align: center;
+
 }
 form {
     width: 500px;
@@ -105,6 +106,7 @@ form {
     box-sizing: border-box;
     margin-bottom: 10px;
     font-size: 16px;
+    color: #00539CFF;
   }
 
   button {

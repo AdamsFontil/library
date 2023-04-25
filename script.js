@@ -12,13 +12,6 @@ function Book(title, author, pages, read,) {
   this.read = read
 }
 
-// Book.prototype.sayName = function () {
-//   this.sayName = function() {
-//     console.log(this.name)
-//   }
-// }
-
-
 function showBooks () {
         len = myLibrary.length
         target = myLibrary[len-1]
@@ -85,29 +78,14 @@ function showBooks () {
 
 }
 
-
-
-
-
-
-
   function addBook (title, author, pages, read ) {
     title = document.querySelector('#title').value
     author = document.querySelector('#author').value;
-    pages = document.querySelector('#pages').value;
+    pages = `${document.querySelector('#pages').value} pages`;
     read = document.querySelector('#read').checked ? document.querySelector('#read').value : 'Not Read';
     let newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
   }
-
-// so that page has books on display
-// for (i =0; i <12; i++) {
-//   addBook()
-//   showBooks()
-//   closeTheForm()
-//   console.log('added an empty book')
-// }
-
 
 
 const bookBtn = document.querySelector('.bookBtn')
@@ -151,18 +129,3 @@ function openTheForm() {
 function closeTheForm() {
     document.getElementById("form").style.display = "none";
   }
-
-  // document.querySelector("form").addEventListener("submit", function(event) {
-  //   let requiredInputs = document.querySelectorAll("input[required]");
-  //   let isValid = true;
-  //   for (let i = 0; i < requiredInputs.length; i++) {
-  //     if (!requiredInputs[i].value) {
-  //       isValid = false;
-  //       break;
-  //     }
-  //   }
-  //   if (!isValid) {
-  //     event.preventDefault();
-  //     alert("All required fields must be filled out.");
-  //   }
-  // });
